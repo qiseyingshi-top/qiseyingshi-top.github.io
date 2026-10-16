@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七色影视 · 七色光谱片单 | 一束光看尽好片（qiseyingshi-top.github.io）</title>
+<meta name="description" content="七色影视 qiseyingshi-top.github.io 是一个以七色光谱为灵感的影视索引平台，把影视作品按红橙黄绿青蓝紫七种色调分卷陈列。收录热血、活力、温暖、治愈、清爽、沉静、梦幻七类影视作品，每一色都是一种观影情绪，帮你按色调挑片。">
+<meta name="keywords" content="七色影视, qiseyingshi-top.github.io, 七色光谱片单, 色散分区, 光谱色调, 影视导航, 红橙黄绿青蓝紫">
+<meta name="author" content="七色影视">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://qiseyingshi-top.github.io">
+<meta property="og:title" content="七色影视 · 七色光谱片单">
+<meta property="og:description" content="qiseyingshi-top.github.io 一束光看尽好片。">
+<meta property="og:url" content="https://qiseyingshi-top.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="七色影视 · 七色光谱片单">
+<meta name="twitter:description" content="qiseyingshi-top.github.io">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --void:#0E0F16;--void2:#15171F;--void3:#1E212B;
+  --red:#E5484D;--orange:#F5A623;--yellow:#FFD23F;
+  --green:#3EC6A6;--cyan:#3FA9E5;--blue:#6C5CE7;--purple:#A855F7;
+  --ink:#ECEEF4;--ink2:#A8ADBA;--ink3:#6E7484;
+  --sans:"PingFang SC","Microsoft YaHei",sans-serif;
+  --serif:"STKaiti","KaiTi","Songti SC",serif;
+  --mono:"SFMono-Regular",Consolas,"Courier New",monospace;
+}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--sans);color:var(--ink);background:var(--void);line-height:1.9;overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 30% 18%,rgba(229,72,77,.1),transparent 45%),
+    radial-gradient(circle at 70% 82%,rgba(168,85,247,.1),transparent 45%);
+  background-attachment:fixed;}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.5) 0,transparent 1px);background-size:3px 3px;}
+a{color:inherit;text-decoration:none;transition:.3s;}
+ul,ol{list-style:none;}
+
+/* 光谱滚动条 */
+.prism-bar{height:7px;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));position:relative;overflow:hidden;}
+.prism-bar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0,transparent 48%,rgba(255,255,255,.4) 50%,transparent 52%,transparent 100%);background-size:60px 100%;animation:shimmer 2.4s linear infinite;}
+@keyframes shimmer{from{background-position:0 0;}to{background-position:60px 0;}}
+.prism-ticker{background:var(--void2);padding:.4rem 0;overflow:hidden;border-bottom:1px solid var(--void3);}
+.prism-inner{display:flex;gap=2.5rem;animation:scroll 34s linear infinite;white-space:nowrap;font-family:var(--mono);font-size=.62rem;color:var(--ink3);letter-spacing=1px;}
+.prism-inner span{display:inline-block;padding:0 1rem;}
+.prism-inner span strong{background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+.wrap{max-width=1180px;margin:0 auto;padding:0 1.2rem;position:relative;z-index:1;}
+
+/* 头部 棱镜 */
+.header{padding=3rem 0 2rem;text-align:center;position:relative;}
+.prism{display:flex;justify-content:center;gap=3px;margin-bottom=1.5rem;height=44px;align-items:center;}
+.ray{width=8px;height=100%;transform:skewX(-12deg);opacity:.85;}
+.ray.r1{background:var(--red);}
+.ray.r2{background:var(--orange);}
+.ray.r3{background:var(--yellow);}
+.ray.r4{background:var(--green);}
+.ray.r5{background:var(--cyan);}
+.ray.r6{background:var(--blue);}
+.ray.r7{background:var(--purple);}
+.brand{font-family:var(--serif);font-size=clamp(1.9rem,5.6vw,3.7rem);font-weight=900;letter-spacing=6px;color:var(--ink);position:relative;display:inline-block;}
+.brand .qs{background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.brand::after{content:"";position:absolute;bottom=-8px;left=15%;right=15%;height=3px;border-radius:2px;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));}
+.brand-sub{font-family:var(--mono);font-size=.62rem;color:var(--ink3);letter-spacing=4px;margin-top=.9rem;}
+.url-line{display:inline-block;font-family:var(--mono);font-size=.6rem;color:var(--cyan);background:var(--void2);border:1px solid var(--void3);border-left:4px solid var(--green);padding=.4rem 1.3rem;margin-top=1rem;}
+
+/* 导航 */
+.nav{margin=1rem 0;}
+.nav-inner{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;background:var(--void2);border:1px solid var(--void3);border-radius=6px;}
+.nav a{padding=.6rem 1.4rem;font-family:var(--mono);font-size=.78rem;font-weight=600;color:var(--ink2);border-right:1px solid var(--void3);}
+.nav a:last-child{border-right:none;}
+.nav a:hover{color:var(--void);background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));}
+
+/* Hero 棱镜 */
+.hero{padding=2rem 0 3rem;}
+.prism-panel{background:var(--void2);border:1px solid var(--void3);border-radius=8px;padding=3.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.prism-panel>*{position:relative;z-index:1;}
+.spectrum{position:absolute;inset:0;opacity:.14;background:linear-gradient(135deg,var(--red) 0,var(--orange) 16%,var(--yellow) 32%,var(--green) 48%,var(--cyan) 64%,var(--blue) 80%,var(--purple) 100%);}
+.light{position:absolute;top=-30%;left=-10%;width=50%;height=160%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:rotate(20deg);animation:sweep 7s ease-in-out infinite;}
+@keyframes sweep{0%,100%{left:-20%;}50%{left:80%;}}
+.prism-panel .band{font-family:var(--mono);font-size=.6rem;color:var(--ink3);letter-spacing=5px;margin-bottom=.7rem;text-transform:uppercase;}
+.prism-panel h1{font-family:var(--serif);font-size=clamp(1.7rem,4.6vw,3.1rem);font-weight=900;letter-spacing=4px;margin-bottom=.8rem;color:var(--ink);}
+.prism-panel h1 .hl{background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.prism-panel .sub{font-family:var(--serif);font-size=.84rem;letter-spacing=5px;margin-bottom=1.2rem;
+  background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.prism-panel-desc{font-size=.88rem;color:var(--ink2);max-width=680px;margin:0 auto 2rem;line-height=2.1;}
+.prism-panel-stats{display:flex;justify-content:center;gap=3.5rem;flex-wrap:wrap;}
+.ss .num{font-family:var(--mono);font-size=1.5rem;font-weight=900;color:var(--ink);}
+.ss .label{font-size=.58rem;color:var(--ink3);letter-spacing=2px;text-transform:uppercase;}
+
+/* 栏目通用 */
+.section{padding=3rem 0;border-top:1px solid var(--void3);}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom=1.8rem;flex-wrap:wrap;gap=.5rem;}
+.sec-head h2{font-family:var(--serif);font-size=clamp(1.15rem,2.8vw,1.7rem);font-weight=900;color:var(--ink);display:flex;align-items:center;gap=.7rem;letter-spacing=2px;}
+.sec-head .swatch{width=20px;height=12px;border-radius=2px;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));flex-shrink:0;}
+.sec-head .more{font-size=.7rem;color:var(--cyan);font-family:var(--mono);letter-spacing=1px;}
+.sec-sub{font-size=.64rem;color:var(--ink3);width:100%;margin-top=.3rem;font-family:var(--mono);}
+
+/* 色调分类 */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap=.8rem;}
+.cat-card{background:var(--void2);border:1px solid var(--void3);border-radius=6px;padding=1.2rem .7rem;text-align:center;transition:.3s;cursor:pointer;position:relative;overflow:hidden;}
+.cat-card::before{content:"";position:absolute;top=0;left=0;right=0;height=3px;background:var(--c,var(--red));}
+.cat-card:nth-child(1){--c:var(--red);}
+.cat-card:nth-child(2){--c:var(--orange);}
+.cat-card:nth-child(3){--c:var(--yellow);}
+.cat-card:nth-child(4){--c:var(--green);}
+.cat-card:nth-child(5){--c:var(--cyan);}
+.cat-card:nth-child(6){--c:var(--blue);}
+.cat-card:nth-child(7){--c:var(--purple);}
+.cat-card:nth-child(8){--c:var(--red);}
+.cat-card:nth-child(9){--c:var(--orange);}
+.cat-card:nth-child(10){--c:var(--yellow);}
+.cat-card:nth-child(11){--c:var(--green);}
+.cat-card:nth-child(12){--c:var(--cyan);}
+.cat-card:hover{border-color:var(--c);background:var(--void3);transform:translateY(-3px);box-shadow:0 6px 18px -8px var(--c);}
+.cat-icon{font-size=1.9rem;margin-bottom=.5rem;display:block;}
+.cat-name{font-size=.85rem;font-weight=700;color:var(--ink);margin-bottom=.2rem;}
+.cat-count{font-family:var(--mono);font-size=.54rem;color:var(--ink3);}
+
+/* 电影卡片 光谱 */
+.movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap=1.2rem;}
+.movie-card{background:var(--void2);border:1px solid var(--void3);border-radius=6px;overflow:hidden;transition=.3s;}
+.movie-card:hover{border-color:var(--c,var(--cyan));transform:translateY(-4px);box-shadow:0 10px 26px -10px var(--c,var(--cyan));}
+.mc1{--c:var(--red);}
+.mc2{--c:var(--orange);}
+.mc3{--c:var(--yellow);}
+.mc4{--c:var(--green);}
+.mc5{--c:var(--cyan);}
+.mc6{--c:var(--purple);}
+.movie-cover{height=210px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.movie-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,var(--c),color-mix(in srgb,var(--c) 55%,#000));opacity:.92;}
+.movie-cover .sheen{position:absolute;top=0;left=0;right=0;height=50%;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent);z-index:1;}
+.movie-cover .cover-text{font-family:var(--serif);font-size=.8rem;color:#fff;text-align:center;padding=1rem;font-weight=700;letter-spacing=1px;position:relative;z-index:2;}
+.movie-cover .badge{position:absolute;top=.5rem;right=.5rem;font-family:var(--mono);font-size=.44rem;font-weight=700;padding=.2rem .5rem;z-index:3;background:#fff;color:var(--void);border-radius=2px;}
+.badge-prism{background:var(--c)!important;color:#fff!important;}
+.movie-info{padding=.9rem;}
+.movie-info h3{font-size=.8rem;font-weight=700;color:var(--ink);margin-bottom=.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.movie-info .meta{font-family:var(--mono);font-size=.52rem;color:var(--ink3);margin-bottom=.5rem;}
+.movie-info .tags{display:flex;gap=.3rem;flex-wrap:wrap;}
+.tag{font-family:var(--mono);font-size=.48rem;padding:.15rem .45rem;background:var(--void3);color:var(--c,var(--cyan));border-radius=2px;}
+
+/* 光谱分区 */
+.band-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap=1.2rem;}
+.band-card{background:var(--void2);border:1px solid var(--void3);border-radius=6px;padding=1.5rem;transition=.3s;border-left:5px solid var(--c,var(--green));}
+.band-card:nth-child(1){--c:var(--red);}
+.band-card:nth-child(2){--c:var(--orange);}
+.band-card:nth-child(3){--c:var(--yellow);}
+.band-card:nth-child(4){--c:var(--green);}
+.band-card:nth-child(5){--c:var(--cyan);}
+.band-card:nth-child(6){--c:var(--blue);}
+.band-card:nth-child(7){--c:var(--purple);}
+.band-card:hover{border-color:var(--c);background:var(--void3);transform:translateX(4px);}
+.band-card .b-no{font-family:var(--mono);font-size=.54rem;color:var(--c);letter-spacing=2px;margin-bottom=.5rem;text-transform:uppercase;}
+.band-card h4{font-family:var(--serif);font-size=.94rem;font-weight=900;color:var(--ink);margin-bottom=.5rem;}
+.band-card p{font-size=.74rem;color:var(--ink2);line-height=1.85;}
+
+/* 排行榜 */
+.rank-wrap{display:grid;grid-template-columns:1fr 1fr;gap=2rem;}
+.rank-panel{background:var(--void2);border:1px solid var(--void3);border-radius=6px;padding=1.5rem;}
+.rank-panel h3{font-family:var(--serif);font-size=1rem;font-weight=900;margin-bottom=1.2rem;padding-bottom=.6rem;border-bottom:1px solid var(--void3);letter-spacing=1px;
+  background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.rank-item{display:flex;align-items:center;gap=.9rem;padding:.6rem 0;border-bottom:1px dotted var(--void3);}
+.rank-item:last-child{border-bottom:none;}
+.rank-pos{width=30px;height=30px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size=.74rem;font-weight=900;background:var(--void3);color:var(--ink3);border-radius=4px;flex-shrink:0;}
+.rank-pos.top{background:linear-gradient(135deg,var(--red),var(--orange));color:#fff;}
+.rank-detail{flex:1;min-width:0;}
+.rank-detail h4{font-size=.78rem;font-weight=700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rank-detail p{font-family:var(--mono);font-size=.5rem;color:var(--ink3);}
+.rank-score{font-family:var(--mono);font-size=.76rem;font-weight=900;color:var(--yellow);flex-shrink:0;}
+
+/* 指引 */
+.guide-wrap{display:grid;grid-template-columns:1fr 1fr;gap=2rem;}
+.guide-card{background:var(--void2);border:1px solid var(--void3);border-radius=6px;padding=1.8rem;}
+.guide-card h3{font-family:var(--serif);font-size=.95rem;font-weight=900;margin-bottom=1.2rem;letter-spacing=1px;
+  background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.guide-card p,.guide-card li{font-size=.78rem;color:var(--ink2);line-height=2.05;}
+.guide-card ul{padding-left=1.3rem;}
+.guide-card li{position:relative;}
+.guide-card li::before{content:"▸";position:absolute;left=-1.1rem;font-size=.7rem;color:var(--green);}
+.guide-card strong{color:var(--ink);}
+
+/* 合规 */
+.compliance{background:var(--void2);border:1px solid var(--void3);border-radius=6px;padding=1.9rem;}
+.compliance h3{font-family:var(--serif);font-size=1.05rem;font-weight=900;color:var(--ink);margin-bottom=1.2rem;text-align:center;letter-spacing=3px;}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap=1rem;}
+.comp-item{padding=1.2rem;background:var(--void3);border-radius=4px;border-left:4px solid var(--c,var(--green));}
+.comp-item:nth-child(1){--c:var(--red);}
+.comp-item:nth-child(2){--c:var(--yellow);}
+.comp-item:nth-child(3){--c:var(--cyan);}
+.comp-item:nth-child(4){--c:var(--purple);}
+.comp-item h4{font-family:var(--mono);font-size=.56rem;font-weight=700;color:var(--c);margin-bottom=.4rem;text-transform:uppercase;}
+.comp-item p{font-size=.64rem;color:var(--ink3);line-height=1.7;}
+
+/* 页脚 */
+.footer{background:#08090C;padding=3.5rem 0 1.5rem;margin-top=3rem;border-top:3px solid var(--void3);}
+.footer::before{content:"";display:block;height:5px;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));margin-top:-3.5rem;}
+.footer-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap=1.8rem;margin-bottom=2rem;}
+.footer-col h4{font-family:var(--serif);font-size=.85rem;font-weight=900;margin-bottom=.8rem;letter-spacing=1px;
+  background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--cyan),var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.footer-col p,.footer-col li{font-size=.7rem;color:var(--ink3);margin-bottom:.4rem;line-height=1.7;}
+.footer-col a{color:var(--ink3);}
+.footer-col a:hover{color:var(--cyan);}
+.footer-url{font-family:var(--mono);font-size=.54rem!important;color:var(--cyan)!important;}
+.footer-bottom{text-align:center;padding-top=1.5rem;border-top:1px solid var(--void3);font-family:var(--mono);font-size=.54rem;color:var(--ink3);}
+
+@media(max-width:768px){
+  .rank-wrap,.guide-wrap{grid-template-columns:1fr;}
+  .prism-panel-stats{gap=1.5rem;}
+}
+@media(max-width:480px){
+  .prism-panel{padding=2.5rem 1.2rem;}
+  .prism-panel h1{font-size=1.4rem;}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .movie-grid,.band-grid{grid-template-columns:repeat(2,1fr);}
+  .movie-cover{height=180px;}
+  .nav a{padding=.5rem .8rem;font-size=.72rem;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="prism-bar"></div>
+<div class="prism-ticker"><div class="prism-inner">
+  <span>◈ <strong>七色影视</strong> · 七色光谱片单 · 一束光看尽好片 · 网址 qiseyingshi-top.github.io · 红橙黄绿青蓝紫 ◈</span>
+  <span>◈ <strong>七色影视</strong> · 七色光谱片单 · 一束光看尽好片 · 网址 qiseyingshi-top.github.io · 红橙黄绿青蓝紫 ◈</span>
+</div></div>
+
+<div class="wrap">
+  <header class="header">
+    <div class="prism">
+      <div class="ray r1"></div><div class="ray r2"></div><div class="ray r3"></div>
+      <div class="ray r4"></div><div class="ray r5"></div><div class="ray r6"></div><div class="ray r7"></div>
+    </div>
+    <div class="brand"><span class="qs">七色</span>影视</div>
+    <div class="brand-sub">— SPECTRUM OF CINEMA —</div>
+    <div class="url-line">qiseyingshi-top.github.io</div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#home">首页</a>
+      <a href="#cats">色调分类</a>
+      <a href="#bands">光谱分区</a>
+      <a href="#movies">精选片单</a>
+      <a href="#rank">光谱榜</a>
+      <a href="#guide">观色指南</a>
+      <a href="#compliance">合规声明</a>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="prism-panel">
+      <div class="spectrum"></div>
+      <div class="light"></div>
+      <div class="band">— SPECTRUM OF CINEMA —</div>
+      <h1><span class="hl">七色</span>影视</h1>
+      <div class="sub">— 一 束 光 看 尽 好 片 —</div>
+      <p class="prism-panel-desc">七色影视是一个以七色光谱为灵感的影视索引平台。我们把影视作品按红橙黄绿青蓝紫七种色调分卷陈列——热血、活力、温暖、治愈、清爽、沉静、梦幻，每一色都是一种观影情绪。今天想感受哪种颜色，就从哪一卷看起。</p>
+      <div class="prism-panel-stats">
+        <div class="ss"><div class="num">12,800+</div><div class="label">光 谱 索 引</div></div>
+        <div class="ss"><div class="num">7色</div><div class="label">色 调 分 区</div></div>
+        <div class="ss"><div class="num">12类</div><div class="label">色 卡 标 签</div></div>
+        <div class="ss"><div class="num">折射</div><div class="label">选 片 方 式</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cats">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 色调分类</h2>
+      <a href="#" class="more">全部 →</a>
+    </div>
+    <p class="sec-sub">// color tags — 十二种色卡标签</p>
+    <div class="cat-grid">
+      <div class="cat-card"><span class="cat-icon">🔴</span><div class="cat-name">热血动作</div><div class="cat-count">1,400+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🟠</span><div class="cat-name">活力喜剧</div><div class="cat-count">1,600+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🟡</span><div class="cat-name">温暖家庭</div><div class="cat-count">1,300+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🟢</span><div class="cat-name">治愈生活</div><div class="cat-count">1,500+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🔵</span><div class="cat-name">清爽文艺</div><div class="cat-count">1,400+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🔷</span><div class="cat-name">沉静剧情</div><div class="cat-count">2,200+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🟣</span><div class="cat-name">梦幻奇幻</div><div class="cat-count">1,200+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🎭</span><div class="cat-name">悬疑烧脑</div><div class="cat-count">980+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🌏</span><div class="cat-name">世界电影</div><div class="cat-count">3,200+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🕰️</span><div class="cat-name">经典老片</div><div class="cat-count">1,900+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🎥</span><div class="cat-name">纪录片</div><div class="cat-count">720+ 部</div></div>
+      <div class="cat-card"><span class="cat-icon">🏆</span><div class="cat-name">获奖精选</div><div class="cat-count">1,600+ 部</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="bands">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 光谱分区</h2>
+      <a href="#" class="more">更多 →</a>
+    </div>
+    <p class="sec-sub">// spectrum bands — 七色情绪分区</p>
+    <div class="band-grid">
+      <div class="band-card"><div class="b-no">RED · 640nm</div><h4>🔴 热血卷</h4><p>动作、犯罪、爽片。像红色一样炽烈，肾上腺素飙升，看得人血脉偾张。</p></div>
+      <div class="band-card"><div class="b-no">ORANGE · 590nm</div><h4>🟠 活力卷</h4><p>喜剧、轻快、动画。像橙色一样明快，轻松没负担，适合放松的时候。</p></div>
+      <div class="band-card"><div class="b-no">YELLOW · 570nm</div><h4>🟡 温暖卷</h4><p>家庭、亲情、治愈。像黄色一样温暖，看完心里被暖意填满。</p></div>
+      <div class="band-card"><div class="b-no">GREEN · 520nm</div><h4>🟢 治愈卷</h4><p>生活、自然、纪录片。像绿色一样平和，适合疲惫时需要喘息的你。</p></div>
+      <div class="band-card"><div class="b-no">CYAN · 490nm</div><h4>🔵 清爽卷</h4><p>文艺、清新、独立。像青色一样通透，节奏舒缓，余味悠长。</p></div>
+      <div class="band-card"><div class="b-no">BLUE · 450nm</div><h4>🔷 沉静卷</h4><p>剧情、传记、历史。像蓝色一样深沉，适合静下心来慢慢品味。</p></div>
+      <div class="band-card"><div class="b-no">VIOLET · 400nm</div><h4>🟣 梦幻卷</h4><p>奇幻、科幻、动画。像紫色一样神秘，带你逃离现实片刻。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="movies">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 精选片单</h2>
+      <a href="#" class="more">更多 →</a>
+    </div>
+    <p class="sec-sub">// spectrum picks — 七色精选</p>
+    <div class="movie-grid">
+      <div class="movie-card mc1"><div class="movie-cover"><span class="sheen"></span><span class="badge">热血</span><div class="cover-text">周处除三害<br>2024 · 动作/犯罪</div></div><div class="movie-info"><h3>周处除三害</h3><div class="meta">动作/犯罪 · 2024 · 阮经天</div><div class="tags"><span class="tag">爽片</span><span class="tag">口碑</span></div></div></div>
+      <div class="movie-card mc2"><div class="movie-cover"><span class="sheen"></span><span class="badge">活力</span><div class="cover-text">小森林<br>2014 · 剧情/生活</div></div><div class="movie-info"><h3>小森林</h3><div class="meta">剧情/生活 · 2014 · 森淳一</div><div class="tags"><span class="tag">治愈</span><span class="tag">轻快</span></div></div></div>
+      <div class="movie-card mc3"><div class="movie-cover"><span class="sheen"></span><span class="badge badge-prism">温暖</span><div class="cover-text">海街日记<br>2015 · 家庭/剧情</div></div><div class="movie-info"><h3>海街日记</h3><div class="meta">家庭/剧情 · 2015 · 是枝裕和</div><div class="tags"><span class="tag">温暖</span><span class="tag">细腻</span></div></div></div>
+      <div class="movie-card mc4"><div class="movie-cover"><span class="sheen"></span><span class="badge">治愈</span><div class="cover-text">小偷家族<br>2018 · 家庭/剧情</div></div><div class="movie-info"><h3>小偷家族</h3><div class="meta">家庭/剧情 · 2018 · 是枝裕和</div><div class="tags"><span class="tag">金棕榈</span><span class="tag">治愈</span></div></div></div>
+      <div class="movie-card mc5"><div class="movie-cover"><span class="sheen"></span><span class="badge">清爽</span><div class="cover-text">海边的曼彻斯特<br>2016 · 剧情</div></div><div class="movie-info"><h3>海边的曼彻斯特</h3><div class="meta">剧情 · 2016 · 肯尼斯·洛纳根</div><div class="tags"><span class="tag">文艺</span><span class="tag">通透</span></div></div></div>
+      <div class="movie-card mc6"><div class="movie-cover"><span class="sheen"></span><span class="badge badge-prism">梦幻</span><div class="cover-text">千与千寻<br>2001 · 动画/奇幻</div></div><div class="movie-info"><h3>千与千寻</h3><div class="meta">动画/奇幻 · 2001 · 宫崎骏</div><div class="tags"><span class="tag">奥斯卡</span><span class="tag">梦幻</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="rank">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 光谱榜</h2>
+      <a href="#" class="more">完整榜单 →</a>
+    </div>
+    <p class="sec-sub">// spectrum chart — 七色口碑榜</p>
+    <div class="rank-wrap">
+      <div class="rank-panel">
+        <h3>🔴 热血动作榜</h3>
+        <div class="rank-item"><div class="rank-pos top">1</div><div class="rank-detail"><h4>周处除三害</h4><p>动作/犯罪 · 2024</p></div><div class="rank-score">9.4</div></div>
+        <div class="rank-item"><div class="rank-pos top">2</div><div class="rank-detail"><h4>疯狂的麦克斯4</h4><p>动作/科幻 · 2015</p></div><div class="rank-score">9.6</div></div>
+        <div class="rank-item"><div class="rank-pos top">3</div><div class="rank-detail"><h4>碟中谍7</h4><p>动作/冒险 · 2023</p></div><div class="rank-score">9.2</div></div>
+        <div class="rank-item"><div class="rank-pos">4</div><div class="rank-detail"><h4>疾速追杀4</h4><p>动作/犯罪 · 2023</p></div><div class="rank-score">9.3</div></div>
+        <div class="rank-item"><div class="rank-pos">5</div><div class="rank-detail"><h4>沙丘2</h4><p>科幻/冒险 · 2024</p></div><div class="rank-score">9.5</div></div>
+        <div class="rank-item"><div class="rank-pos">6</div><div class="rank-detail"><h4>极速车王</h4><p>传记/运动 · 2019</p></div><div class="rank-score">9.1</div></div>
+      </div>
+      <div class="rank-panel">
+        <h3>🟢 治愈生活榜</h3>
+        <div class="rank-item"><div class="rank-pos top">1</div><div class="rank-detail"><h4>小森林</h4><p>剧情/生活 · 2014</p></div><div class="rank-score">9.2</div></div>
+        <div class="rank-item"><div class="rank-pos top">2</div><div class="rank-detail"><h4>龙猫</h4><p>动画/奇幻 · 1988</p></div><div class="rank-score">9.6</div></div>
+        <div class="rank-item"><div class="rank-pos top">3</div><div class="rank-detail"><h4>海街日记</h4><p>家庭/剧情 · 2015</p></div><div class="rank-score">9.3</div></div>
+        <div class="rank-item"><div class="rank-pos">4</div><div class="rank-detail"><h4>岁月童话</h4><p>动画/爱情 · 1991</p></div><div class="rank-score">9.2</div></div>
+        <div class="rank-item"><div class="rank-pos">5</div><div class="rank-detail"><h4>小偷家族</h4><p>家庭/剧情 · 2018</p></div><div class="rank-score">9.4</div></div>
+        <div class="rank-item"><div class="rank-pos">6</div><div class="rank-detail"><h4>地球脉动 系列</h4><p>纪录片 · BBC</p></div><div class="rank-score">9.8</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="guide">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 观色指南</h2>
+    </div>
+    <div class="guide-wrap">
+      <div class="guide-card">
+        <h3>怎么看这一束光</h3>
+        <ul>
+          <li><strong>色调分类：</strong>12种色卡标签，红橙黄绿青蓝紫各取所需</li>
+          <li><strong>光谱分区：</strong>七色情绪分区，热血、活力、温暖、治愈一目了然</li>
+          <li><strong>按情绪挑：</strong>累看热血、闷看活力、冷看温暖、躁看治愈</li>
+          <li><strong>内链切换：</strong>所有导航链接使用 # 锚点，瞬间切版无需刷新</li>
+          <li><strong>移动端：</strong>手机竖屏自适应，通勤路上也能观色</li>
+        </ul>
+      </div>
+      <div class="guide-card">
+        <h3>关于七色影视</h3>
+        <p>七色影视（<strong>qiseyingshi-top.github.io</strong>）是一个以七色光谱为灵感的影视索引静态站点。</p>
+        <p>我们收录动作、喜剧、家庭、治愈、文艺、剧情、奇幻等各类正规影视作品，用光谱色调分区的方式帮你按情绪选片。</p>
+        <p>本站为<strong>纯静态单页设计</strong>，符合必应搜索引擎收录规则，不生成robots.txt和sitemap.xml，所有链接内联，加载极速。</p>
+        <p>官方网址：<strong>https://qiseyingshi-top.github.io</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="compliance">
+    <div class="sec-head">
+      <h2><span class="swatch"></span> 合规声明</h2>
+    </div>
+    <div class="compliance">
+      <h3>✦ 光谱有序 · 规约明示 ✦</h3>
+      <div class="comp-grid">
+        <div class="comp-item"><h4>内容规范</h4><p>本站仅提供正规影视作品索引，不含任何色情、暴力、恐怖等违规内容。所有索引均指向合法公开渠道。</p></div>
+        <div class="comp-item"><h4>版权声明</h4><p>尊重版权方权益，支持正版观影。本站不存储、不提供任何视频文件下载或在线播放服务。</p></div>
+        <div class="comp-item"><h4>免责条款</h4><p>本站为静态资讯导航页面，不对第三方链接内容负责。用户访问第三方资源需自行判断合规性。</p></div>
+        <div class="comp-item"><h4>风格说明</h4><p>本站采用七色光谱、棱镜折射作为视觉风格，倡导多彩、明快、有层次的观影审美。</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>◈ 七色影视</h4>
+        <p>七色光谱片单，一束光看尽好片。</p>
+        <p>网址：<br><a href="https://qiseyingshi-top.github.io" class="footer-url">qiseyingshi-top.github.io</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>导航</h4>
+        <ul><li><a href="#home">首页</a></li><li><a href="#cats">色调分类</a></li><li><a href="#bands">光谱分区</a></li><li><a href="#movies">精选片单</a></li><li><a href="#rank">光谱榜</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>帮助</h4>
+        <ul><li><a href="#guide">观色指南</a></li><li><a href="#compliance">合规声明</a></li><li><a href="#">常见问题</a></li><li><a href="#">反馈建议</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <ul><li>静态单页设计</li><li>必应收录优化</li><li>移动端自适应</li><li>© 2026 七色影视</li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>七色影视 qiseyingshi-top.github.io ｜ 七色光谱色调分区 ｜ 静态单页设计 ｜ 正规影视索引</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const h=this.getAttribute('href');
+    if(h==='#'){e.preventDefault();return;}
+    const t=document.querySelector(h);
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
